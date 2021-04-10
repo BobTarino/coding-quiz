@@ -5,43 +5,86 @@ var startButton = document.getElementById("startButton");
 var questionDisplay = document.getElementById("questionDisplay");
 var answerDisplay = document.getElementById("answerDisplay");
 var currentQuestion = 0;
+var time = 60;
+var timeSet = document.querySelector("timer");
 var questionBank = [
     {
         question:"Commonly used data types DO NOT include?",
-        answers: {
-            a: "strings",
-            b: "booleans",
-            c: "alerts",
-            d: "numbers",
-        },
-        correct: "d"
+        answers: [
+            "strings",
+            "booleans",
+            "alerts",
+            "numbers",
+        ],
+        correct: "numbers"
     },
     {
         question:"Commonly used data types DO NOT include?",
-        answers: {
-            a: "strings",
-            b: "booleans",
-            c: "alerts",
-            d: "numbers",
-        },
-        correct: "d"
+        answers: [
+            "strings",
+            "booleans",
+            "alerts",
+            "numbers",
+        ],
+        correct: "numbers"
     },
     {
         question:"Commonly used data types DO NOT include?",
-        answers: {
-            a: "strings",
-            b: "booleans",
-            c: "alerts",
-            d: "numbers",
-        },
-        correct: "d"
-    }
+        answers: [
+            "strings",
+            "booleans",
+            "alerts",
+            "numbers",
+        ],
+        correct: "numbers"
+    },
 ];
 
-function displayQuestionsAnwers() {
-    questionDisplay.textContent = questionBank[currentQuestion].question;
+var timerId;
+function startTimer() {
+    timerId = setInterval(timer);
+    timeSet.textContent = time;
 }
-console.log(questionBank[currentQuestion].question)
+startTimer();
+function displayQuestionsAnwers() {
+    gameScreen.innerHTML = "";
+    questionDisplay.textContent = questionBank[currentQuestion].question;
+    for (let index = 0; index < questionBank[currentQuestion].answers.length; index++) {
+     var button = document.createElement("button");   
+     button.textContent = questionBank[currentQuestion].answers[index];
+     gameScreen.append(button);   
+     button.setAttribute("value", questionBank[currentQuestion].answers[index]);
+    }
+
+}
+function checkAnswer() {
+    if (this.value === questionBank[currentQuestion].answers)
+    {
+        console.log("correct");
+    } else {
+        console.log("incorrect");
+    }
+    currentQuestion++;
+    displayQuestionsAnwers();
+    if (currentQuestion === questionBank.length) {
+        console.log("end quiz");
+        //call end endScreen function
+    } else {
+        displayQuestionsAnwers();
+    }
+    
+
+}
+function timer () {
+    time--;
+    timeSet.textContent = time
+    if (time <= 0) {
+        //end quiz function
+        endScreen();
+    }
+}
+
+//console.log(questionBank[currentQuestion].question)
 startButton.addEventListener("click", function() {
     gameScreen.classList.remove("hide");
     startScreen.classList.add("hide");
