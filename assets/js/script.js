@@ -60,13 +60,20 @@ var questionBank = [
         correct: "console.log"
     },
 ];
-
+// display timer
 var timerId;
 function startTimer() {
     timerId = setInterval(timer, 1000);
     timeSet.textContent = time;
 }
-//startTimer();
+function timer () {
+    time--;
+    timeSet.textContent = time
+    if (time <= 0) {
+        //end quiz function
+        endScreen();
+    }
+}
 
 function displayQuestionsAnwers() {
     gameScreen.innerHTML = "";
@@ -95,16 +102,7 @@ function checkAnswer() {
     } else {
         displayQuestionsAnwers();
     }
-    
 
-}
-function timer () {
-    time--;
-    timeSet.textContent = time
-    if (time <= 0) {
-        //end quiz function
-        endScreen();
-    }
 }
 
 //console.log(questionBank[currentQuestion].question)
