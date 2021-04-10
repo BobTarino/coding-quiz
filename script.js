@@ -2,11 +2,11 @@ var startScreen = document.getElementById("startScreen");
 var gameScreen = document.getElementById("gameScreen");
 var endScreen = document.getElementById("endScreen");
 var startButton = document.getElementById("startButton");
-var questionDisplay = document.getElementById("questionDisplay");
-var answerDisplay = document.getElementById("answerDisplay");
+// var questionDisplay = document.getElementById("questionDisplay");
+// var answerDisplay = document.getElementById("answerDisplay");
 var currentQuestion = 0;
 var time = 60;
-var timeSet = document.querySelector("timer");
+var timeSet = document.getElementById("timer");
 var questionBank = [
     {
         question:"Commonly used data types DO NOT include?",
@@ -19,7 +19,7 @@ var questionBank = [
         correct: "numbers"
     },
     {
-        question:"Commonly used data types DO NOT include?",
+        question:"Why are we doing this to ourselves?",
         answers: [
             "strings",
             "booleans",
@@ -42,19 +42,21 @@ var questionBank = [
 
 var timerId;
 function startTimer() {
-    timerId = setInterval(timer);
+    timerId = setInterval(timer, 1000);
     timeSet.textContent = time;
 }
-startTimer();
+//startTimer();
+
 function displayQuestionsAnwers() {
     gameScreen.innerHTML = "";
-    questionDisplay.textContent = questionBank[currentQuestion].question;
+    gameScreen.textContent = questionBank[currentQuestion].question;
     for (let index = 0; index < questionBank[currentQuestion].answers.length; index++) {
      var button = document.createElement("button");   
      button.textContent = questionBank[currentQuestion].answers[index];
      gameScreen.append(button);   
      button.setAttribute("value", questionBank[currentQuestion].answers[index]);
     }
+    
 
 }
 function checkAnswer() {
@@ -89,4 +91,5 @@ startButton.addEventListener("click", function() {
     gameScreen.classList.remove("hide");
     startScreen.classList.add("hide");
     displayQuestionsAnwers();
+    startTimer();
 });
