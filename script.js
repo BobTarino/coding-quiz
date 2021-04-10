@@ -6,6 +6,7 @@ var startButton = document.getElementById("startButton");
 // var answerDisplay = document.getElementById("answerDisplay");
 var currentQuestion = 0;
 var time = 60;
+var score = 0;
 var timeSet = document.getElementById("timer");
 var questionBank = [
     {
@@ -19,24 +20,44 @@ var questionBank = [
         correct: "numbers"
     },
     {
-        question:"Why are we doing this to ourselves?",
+        question:"String values must be enclosed within___when being assigned to variables?",
         answers: [
-            "strings",
-            "booleans",
-            "alerts",
-            "numbers",
+            "commas",
+            "curly brackets",
+            "quotes",
+            "parenthesis",
         ],
-        correct: "numbers"
+        correct: "quotes"
     },
     {
-        question:"Commonly used data types DO NOT include?",
+        question:"Arrays in JavaScript can be used to store_____?",
         answers: [
-            "strings",
+            "numbers and strings",
+            "other arrays",
             "booleans",
-            "alerts",
-            "numbers",
+            "all of the above",
         ],
-        correct: "numbers"
+        correct: "all of the above"
+    },
+    {
+        question:"The conditional in an if/else statement us enclosed with_____?",
+        answers: [
+            "quotes",
+            "curly brackets",
+            "parenthesis",
+            "square brackets",
+        ],
+        correct: "parenthesis"
+    },
+    {
+        question:"A very useful tool used during development and debugging for printing content to the debugger is:",
+        answers: [
+            "JavaScript",
+            "terminal/bash",
+            "for loops",
+            "console.log",
+        ],
+        correct: "console.log"
     },
 ];
 
