@@ -1,9 +1,19 @@
+
 var startScreen = document.getElementById("startScreen");
 var gameScreen = document.getElementById("gameScreen");
 var endScreen = document.getElementById("endScreen");
 var startButton = document.getElementById("startButton");
-// var questionDisplay = document.getElementById("questionDisplay");
-// var answerDisplay = document.getElementById("answerDisplay");
+var firstQuestion = document.getElementById("firstQuestion");
+var firstAnswer = document.getElementById("firstAnswer");
+var secondQuestion = document.getElementById("secondQuestion");
+var secondAnswer = document.getElementById("secondAnswer");
+var thirdQuestion = document.getElementById("thirdQuestion");
+var thirdAnswer = document.getElementById("thirdAnswer");
+var fourthQuestion = document.getElementById("fourthQuestion");
+var fourthAnswer = document.getElementById("fourthAnswer");
+var fifthQuestion = document.getElementById("fifthQuestion");
+var fifthAnswer = document.getElementById("fifthAnswer");
+
 var currentQuestion = 0;
 var time = 60;
 var score = 0;
@@ -17,7 +27,7 @@ var questionBank = [
             "alerts",
             "numbers",
         ],
-        correct: "numbers"
+        correct: "alerts"
     },
     {
         question:"String values must be enclosed within___when being assigned to variables?",
@@ -40,7 +50,7 @@ var questionBank = [
         correct: "all of the above"
     },
     {
-        question:"The conditional in an if/else statement us enclosed with_____?",
+        question:"The conditional in an if/else statement is enclosed with_____?",
         answers: [
             "quotes",
             "curly brackets",
@@ -60,6 +70,12 @@ var questionBank = [
         correct: "console.log"
     },
 ];
+startButton.addEventListener("click", function() {
+    firstQuestion.classList.remove("hide");
+    startScreen.classList.add("hide");
+    displayQuestionsAnwers();
+    startTimer();
+});
 // display timer
 var timerId;
 function startTimer() {
@@ -69,7 +85,7 @@ function startTimer() {
 function timer () {
     time--;
     timeSet.textContent = time
-    if (time <= 0) {
+    if (time === 0) {
         //end quiz function
         endScreen();
     }
@@ -78,37 +94,37 @@ function timer () {
 function displayQuestionsAnwers() {
     gameScreen.innerHTML = "";
     gameScreen.textContent = questionBank[currentQuestion].question;
-    for (let index = 0; index < questionBank[currentQuestion].answers.length; index++) {
+    for (let i = 0; i < questionBank[currentQuestion].answers.length; i++) {
      var button = document.createElement("button");   
-     button.textContent = questionBank[currentQuestion].answers[index];
+     button.textContent = questionBank[currentQuestion].answers[i];
      gameScreen.append(button);   
-     button.setAttribute("value", questionBank[currentQuestion].answers[index]);
+     button.setAttribute("value", questionBank[currentQuestion].answers[i]);
     }
-    
-
 }
-function checkAnswer() {
-    if (this.value === questionBank[currentQuestion].answers)
-    {
-        console.log("correct");
-    } else {
-        console.log("incorrect");
-    }
-    currentQuestion++;
-    displayQuestionsAnwers();
-    if (currentQuestion === questionBank.length) {
-        console.log("end quiz");
-        //call end endScreen function
-    } else {
-        displayQuestionsAnwers();
-    }
 
-}
+
+// function checkAnswer() {
+//     if (this.value === questionBank[currentQuestion].answers)
+//     {
+//         console.log("correct");
+//     } else {
+//         console.log("incorrect");
+//     }
+//     currentQuestion++;
+//     displayQuestionsAnwers();
+//     if (currentQuestion === questionBank.length) {
+//         console.log("end quiz");
+//         //call end endScreen function
+//     } else {
+//         displayQuestionsAnwers();
+//     }
+
+// }
 
 //console.log(questionBank[currentQuestion].question)
-startButton.addEventListener("click", function() {
-    gameScreen.classList.remove("hide");
-    startScreen.classList.add("hide");
-    displayQuestionsAnwers();
-    startTimer();
-});
+// startButton.addEventListener("click", function() {
+//     gameScreen.classList.remove("hide");
+//     startScreen.classList.add("hide");
+//     displayQuestionsAnwers();
+//     startTimer();
+// });
