@@ -1,7 +1,75 @@
-function startGame() {
+//get the element identified by 'start-btn' and reassign it as a variable
+var startButton = document.getElementById('start-btn');
+//get element identified by 'question-container' and reassign it as a variable
+var questionContainer = document.getElementById('question-container');
+var curentQuestionIndex, randomQuestions
+var questionBank = [
+    {
+        question:"Commonly used data types DO NOT include?",
+        answers: [
+            "strings",
+            "booleans",
+            "alerts",
+            "numbers",
+        ],
+        correct: "alerts"
+    },
+    {
+        question:"String values must be enclosed within___when being assigned to variables?",
+        answers: [
+            "commas",
+            "curly brackets",
+            "quotes",
+            "parenthesis",
+        ],
+        correct: "quotes"
+    },
+    {
+        question:"Arrays in JavaScript can be used to store_____?",
+        answers: [
+            "numbers and strings",
+            "other arrays",
+            "booleans",
+            "all of the above",
+        ],
+        correct: "all of the above"
+    },
+    {
+        question:"The conditional in an if/else statement is enclosed with_____?",
+        answers: [
+            "quotes",
+            "curly brackets",
+            "parenthesis",
+            "square brackets",
+        ],
+        correct: "parenthesis"
+    },
+    {
+        question:"A very useful tool used during development and debugging for printing content to the debugger is:",
+        answers: [
+            "JavaScript",
+            "terminal/bash",
+            "for loops",
+            "console.log",
+        ],
+        correct: "console.log"
+    },
+];
 
+
+startButton.addEventListener('click', startQuiz);
+
+
+function startQuiz() {
+startButton.classList.add('hide');
+randomQuestions = questionBank.sort(() => Math.random - .5);
+curentQuestionIndex = 0;
+questionContainer.classList.remove('hide');
+//call Next Question Function
+setNextQuestion()
 }
 function setNextQuestion() {
+    showQuestion(randomQuestions[curentQuestionIndex])
 
 }
 function selectAnswer() {
