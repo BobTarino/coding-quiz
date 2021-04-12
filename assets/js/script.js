@@ -70,12 +70,7 @@ var questionBank = [
         correct: "console.log"
     },
 ];
-startButton.addEventListener("click", function() {
-    firstQuestion.classList.remove("hide");
-    startScreen.classList.add("hide");
-    displayQuestionsAnwers();
-    startTimer();
-});
+
 // display timer
 var timerId;
 function startTimer() {
@@ -121,10 +116,10 @@ function displayQuestionsAnwers() {
 
 // }
 
-//console.log(questionBank[currentQuestion].question)
-// startButton.addEventListener("click", function() {
-//     gameScreen.classList.remove("hide");
-//     startScreen.classList.add("hide");
-//     displayQuestionsAnwers();
-//     startTimer();
-// });
+console.log(questionBank[currentQuestion].question)
+startButton.addEventListener("click", function() {
+    gameScreen.classList.remove("hide");
+    startScreen.classList.add("hide");
+    displayQuestionsAnwers();
+    startTimer();
+});
