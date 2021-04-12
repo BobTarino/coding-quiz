@@ -18,6 +18,7 @@ body {
     align-items: center;
     width: 100vw;
     height: 100vh;
+    /* assign background color a variable with properties based on hue, saturateness, and lightness */
     background-color: hsl(var(--hue), 100%, 20%);
 }
 body.correct {

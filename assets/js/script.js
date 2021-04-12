@@ -1,3 +1,37 @@
+function startGame() {
+
+}
+function setNextQuestion() {
+
+}
+function selectAnswer() {
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // var startScreen = document.getElementById("startScreen");
 // var gameScreen = document.getElementById("gameScreen");
 // var endScreen = document.getElementById("endScreen");
