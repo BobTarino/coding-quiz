@@ -13,4 +13,4 @@ Screenshots:
 
 Link to deployed application: 
 
-https://bobtarino.github.io/coderefactor
+https://bobtarino.github.io/coding-quiz/
