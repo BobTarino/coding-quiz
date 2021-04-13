@@ -77,19 +77,41 @@ var questionBank = [
         // correct: "console.log"
     },
 ];
+var time = 60;
+var score = 0;
+var timeSet = document.getElementById("timer");
 
-
+//start and next button event listeners
 startButton.addEventListener('click', startQuiz);
+nextButton.addEventListener('click', () => {
+    curentQuestionIndex++;
+    setNextQuestion();
+})
 
+// display timer
+var timerId;
+function startTimer() {
+    timerId = setInterval(timer, 1000);
+    timeSet.textContent = time;
+}
+function timer () {
+    time--;
+    timeSet.textContent = time
+    if (time === 0) {
+        //end quiz function
+        inputScore();
+    }
+}
 
 function startQuiz() {
-startButton.classList.add('hide');
-//shuffles questions and randomizes question bank array upon start
-randomQuestions = questionBank.sort(() => Math.random - .5);
-curentQuestionIndex = 0;
-questionContainer.classList.remove('hide');
-//call Next Question Function
-setNextQuestion()
+    startTimer();
+    startButton.classList.add('hide');
+    //shuffles questions and randomizes question bank array upon start
+    randomQuestions = questionBank.sort(() => Math.random - .5);
+    curentQuestionIndex = 0;
+    questionContainer.classList.remove('hide');
+    //call Next Question Function
+    setNextQuestion();
 }
 
 function setNextQuestion() {
@@ -120,6 +142,7 @@ function showQuestion(question) {
 }
 //reset state after every question
 function resetState() {
+    clearStatusClass(document.body);
     nextButton.classList.add('hide');
     while (answersElement.firstChild) {
         answersElement.removeChild(answersElement.firstChild)
@@ -133,6 +156,12 @@ function selectAnswer(e) {
     Array.from(answersElement.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     });
+    if (randomQuestions.length > curentQuestionIndex + 1) {
+        nextButton.classList.remove('hide');
+    } else {
+        startButton.innerText = 'Restart'
+        startButton.classList.remove('hide')
+    }
     // add the next button after question is answered
     nextButton.classList.remove('hide');
 
@@ -149,6 +178,10 @@ function setStatusClass(element, correct) {
 function clearStatusClass(element) {
     element.classList.remove('correct');
     element.classList.remove('wrong');
+}
+//input highscore
+function inputScore() {
+
 }
 
 
